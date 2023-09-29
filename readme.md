@@ -15,21 +15,32 @@ Esta API permite o gerenciamento de usuários e alunos, oferecendo operações d
 ## Consumindo API via CURL
 
 1. Cadastrar Usuário
-`curl -X POST -H "Content-Type: application/json" -d "{\"username\": \"usuario_teste\", \"password\": \"senha_segura\"}" http://127.0.0.1:5000/cadastrar_usuario
-2. Cadastrar Aluno
-`curl -X POST -u usuario_teste:senha_segura -H "Content-Type: application/json" -d "{\"nome\": \"João Silva\", \"av1\": 8.5, \"av2\": 7.5, \"av3\": 9.0, \"av4\": 10.0}" http://127.0.0.1:5000/cadastrar_aluno`
-3. Listar Alunos
-`curl -X GET -u usuario_teste:senha_segura http://127.0.0.1:5000/alunos`
-4. Obter um Aluno
-`curl -X GET -u usuario_teste:senha_segura http://127.0.0.1:5000/aluno/1`
-5. Atualizar Aluno
-`curl -X PUT -u usuario_teste:senha_segura -H "Content-Type: application/json" -d "{\"nome\": \"João Pereira\", \"av1\": 9.0, \"av2\": 8.5, \"av3\": 9.5, \"av4\": 10.0}" http://127.0.0.1:5000/aluno/1`
-6. Deletar Aluno
-`curl -X DELETE -u usuario_teste:senha_segura http://127.0.0.1:5000/aluno/1`
+    ```sh
+    curl -X POST -H "Content-Type: application/json" -d "{\"username\": \"usuario_teste\", \"password\": \"senha_segura\"}" http://127.0.0.1:5000/cadastrar_usuario
+    ```
+3. Cadastrar Aluno
+   ```sh
+   curl -X POST -u usuario_teste:senha_segura -H "Content-Type: application/json" -d "{\"nome\": \"João Silva\", \"av1\": 8.5, \"av2\": 7.5, \"av3\": 9.0, \"av4\": 10.0}" http://127.0.0.1:5000/cadastrar_aluno
+   ```
+5. Listar Alunos
+    ```sh
+   curl -X GET -u usuario_teste:senha_segura http://127.0.0.1:5000/alunos
+    ```
+7. Obter um Aluno
+    ```sh
+   curl -X GET -u usuario_teste:senha_segura http://127.0.0.1:5000/aluno/1
+    ```
+9. Atualizar Aluno
+   ```sh
+   curl -X PUT -u usuario_teste:senha_segura -H "Content-Type: application/json" -d "{\"nome\": \"João Pereira\", \"av1\": 9.0, \"av2\": 8.5, \"av3\": 9.5, \"av4\": 10.0}" http://127.0.0.1:5000/aluno/1
+   ```
+11. Deletar Aluno
+    ```sh
+    curl -X DELETE -u usuario_teste:senha_segura http://127.0.0.1:5000/aluno/1
+    ```
 
 
 ### Criação da tabela
-
 
 ```SQL
 CREATE DATABASE IF NOT EXISTS mysqldb;
@@ -56,12 +67,12 @@ CREATE TABLE IF NOT EXISTS aluno (
 ### Configuração do banco
 
 #### mysql
-`MYSQL_ROOT_PASSWORD: q1w2e3r4t5`
-`MYSQL_DATABASE: mysqldb`
-`MYSQL_USER: caiohenrks`
-`MYSQL_PASSWORD: 12345678`
+- `MYSQL_ROOT_PASSWORD: q1w2e3r4t5`
+- `MYSQL_DATABASE: mysqldb`
+- `MYSQL_USER: caiohenrks`
+- `MYSQL_PASSWORD: 12345678`
 
 #### phpmyadmin
-`PMA_HOST: mysql`
-`PMA_USER: root`
-`PMA_PASSWORD: q1w2e3r4t5`
+- `PMA_HOST: mysql`
+- `PMA_USER: root`
+- `PMA_PASSWORD: q1w2e3r4t5`
