@@ -1,0 +1,218 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Alunos",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/cadastrar_usuario": {
+      "post": {
+        "summary": "Cadastra um novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuario"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuario registrado"
+          }
+        }
+      }
+    },
+    "/cadastrar_aluno": {
+      "post": {
+        "summary": "Cadastra um novo aluno",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Aluno"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Aluno cadastrado"
+          }
+        }
+      }
+    },
+    "/alunos": {
+      "get": {
+        "summary": "Retorna uma lista de todos os alunos",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de alunos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Aluno"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aluno/{id}": {
+      "get": {
+        "summary": "Retorna um aluno específico",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detalhes do aluno",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aluno"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Aluno não encontrado"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza um aluno específico",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Aluno"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Aluno atualizado"
+          },
+          "404": {
+            "description": "Aluno não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta um aluno específico",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Aluno deletado"
+          },
+          "404": {
+            "description": "Aluno não encontrado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Aluno": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "av1": {
+            "type": "number"
+          },
+          "av2": {
+            "type": "number"
+          },
+          "av3": {
+            "type": "number"
+          },
+          "av4": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}
+
